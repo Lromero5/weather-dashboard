@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Weather Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- icon library -->
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+  
+  <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src='script.js'></script>
+</head>
+<body>
+
+<!-- navbar -->
+ <nav class="navbar">
+    <h1 class="words">Weather Dashboard</h1>
+ </nav>   
+<!-- end of navbar -->
+
+<!-- main container -->
+<div class="container-fluid">
+
+<!-- start of row -->
+  <div class="row">  
+    
+    <!--stat of columm  -->
+    <sidebar class="searchsection col-lg-3">
+        <h3>Search for a City:</h3>
+
+    <!-- The search form -->
+        <form class="searchform">    
+            <input id="city-form" type="text" placeholder="Search.." name="search"><br>
+            <input id="findcity" type="submit"> </input>
+        </form>
+    <!-- end of search form -->
+
+    <!-- city information -->
+        <div class="cities">
+             <ul>
+                <!-- <li class="borderneeded  cities col-md-4">
+                    <a href="#" class="austin city">Austin</a>
+                </li>
+                <li class="borderneeded">
+                    <a href="#" class="chicago city">Chicago</a>
+                </li>
+                <li class="borderneeded"> 
+                    <a href="#" class="newyork city">New York</a>
+                </li>
+                <li class="borderneeded"> 
+                    <a href="#" class="orlando city">Orlando</a>
+                </li>
+                <li class="borderneeded">
+                    <a href="#" class="sanfrancisco city">San Francisco</a>
+                </li>
+                <li class="borderneeded">
+                    <a href="#" class="seattle city">Seattle</a>
+                </li>
+                <li class="borderneeded">
+                    <a href="#" class="denver city">Denver</a>
+                </li>    
+                <li class="borderneeded">
+                    <a href="#" class="atlanta city">Atlanta</a>
+                </li> -->
+            </ul> 
+        </div>
+    </sidebar>
+    <!-- end of columm  -->
+
+    <!-- start columm -->
+    <div class="col-lg-9"> 
+        <div class="main display">
+            <!-- current city information will go here -->
+        </div>
+    </div>  
+    <!-- end columm -->
+
+  </div>
+<!-- end row -->
+
+<!-- Forecast container -->
+<div class="col-md-12">
+    <h3> 5 Day Forecast:</h3>
+
+    <div class="forecast row">
+    <!-- insert 5 day forcast here -->
+    </div>
+</div>
+   
+
+
+
+
+</div>
+<!-- end of container fluid -->
+</body>
+</html>

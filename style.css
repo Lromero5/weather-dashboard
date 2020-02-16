@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.navbar{
+    background-color: grey;
+    color: white;
+    position: sticky;
+}
+
+sidebar {
+  background-color: #f0eff5;
+}
+
+h1 {
+  text-align: center;
+}
+
+.searchform{
+  margin: 10px;
+}
+
+.main {
+  border: 1px solid grey;
+  margin-top: 10px;
+}
+
+  .cities{
+      clear: both;
+  }
+
+  .borderneeded{
+    border: 1px solid grey;
+  }
+
+ .day{
+   display: inline;
+   
+ }
+
+ .card {
+  border: 1px solid black;
+  display: inline;
+  margin: auto;
+ }
+
+ li {
+   list-style: none; 
+   border: 1px solid grey;
+
+ }
