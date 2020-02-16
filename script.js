@@ -12,17 +12,12 @@ $(document).ready(function(){
       //will display the information we are calling from the api
       displaycityinfo()
 
-      var whatWasSearched = $("#city-form").val();
-    //   var newitem = $("<li>");
-    //   newitem.text(whatWasSearched);
-    //   $(".cities").prepend(newitem)
-     // This line grabs the input from the textbox
-     var newcity = $("#city-form").val().trim();
+    var whatWasSearched = $("#city-form").val();
+    var newcity = $("#city-form").val().trim();
 
     var pastcities = localStorage.getItem("cityhistory");
 
     if (pastcities) {
-        console.log(pastcities);
         var parsedcities = JSON.parse(pastcities);
         parsedcities.push(newcity);
         var strCities = JSON.stringify(parsedcities);
@@ -69,14 +64,15 @@ $(document).ready(function(){
               }).then(function(response) {
                   console.log(response)
                 // $(".display").text(JSON.stringify(response.list[0].main.temp));
-                 var currenttemp = $("<h4>").text("current temp: " + response.list[0].main.temp);
-                 var currenthumidity = $("<h4>").text("current humidity: " + response.list[0].main.humidity);
-                 var currentwindspeed = $("<h4>").text("current wind speed: " + response.list[0].wind.speed);
+                 var cityname = $("<h2>").text(response.city.name + " " + moment(response.list[0].dt_txt.split(" ") [0]).format('l'));
+                 var currenttemp = $("<h4>").text("Temperature: " + response.list[0].main.temp + " Degrees F");
+                 var currenthumidity = $("<h4>").text("Humidity: " + response.list[0].main.humidity + "%");
+                 var currentwindspeed = $("<h4>").text("Wind Speed: " + response.list[0].wind.speed + "MPH");
                  
 
                  $(".display").empty()
                  
-                 $(".display").append(currenttemp ,currenthumidity, currentwindspeed);
+                 $(".display").append(cityname, currenttemp ,currenthumidity, currentwindspeed);
 
 
               });
@@ -93,7 +89,7 @@ $(document).ready(function(){
               for (var i = 0; i < data.list.length; i++){
                   if (data.list[i].dt_txt.split(" ") [1] === "03:00:00"){
                       var divE = $("<div>").addClass("card col-md-2") 
-                      var date = $("<p>").text("Date: " + moment(data.list[i].dt_txt.split(" ") [0]).format("MMM Do YY"));
+                      var date = $("<p>").text("Date: " + moment(data.list[i].dt_txt.split(" ") [0]).format('l'));
                       var imgtag = $("<img>").attr("src", "https://clipartstation.com/wp-content/uploads/2018/10/weather-clipart-2.jpg").addClass("weatherpic");
                       var temp = $("<p>").text("Temperature: " + data.list[i].main.temp);
                       var humidity = $("<p>").text("Humidty" +data.list[i].main.humidity);
