@@ -92,7 +92,7 @@ $(document).ready(function(){
                       var date = $("<p>").text("Date: " + moment(data.list[i].dt_txt.split(" ") [0]).format('l'));
                       var imgtag = $("<img>").attr("src", "https://clipartstation.com/wp-content/uploads/2018/10/weather-clipart-2.jpg").addClass("weatherpic");
                       var temp = $("<p>").text("Temperature: " + data.list[i].main.temp);
-                      var humidity = $("<p>").text("Humidty" +data.list[i].main.humidity);
+                      var humidity = $("<p>").text("Humidty: " +data.list[i].main.humidity);
                     
                       divE.append(date, imgtag, temp, humidity);
                       $(".forecast").append(divE);
