@@ -1,7 +1,9 @@
 $(document).ready(function(){
 
    //new code 
-    var allcities = [" "];
+    var allcities = [];
+
+    displaysearchhistory()
   
    // This function handles events where a movie button is clicked
    $("#findcity").on("click", function(event) {
@@ -11,9 +13,28 @@ $(document).ready(function(){
       displaycityinfo()
 
       var whatWasSearched = $("#city-form").val();
-      var newitem = $("<li>");
-      newitem.text(whatWasSearched);
-      $(".cities").prepend(newitem)
+    //   var newitem = $("<li>");
+    //   newitem.text(whatWasSearched);
+    //   $(".cities").prepend(newitem)
+     // This line grabs the input from the textbox
+     var newcity = $("#city-form").val().trim();
+
+    var pastcities = localStorage.getItem("cityhistory");
+
+    if (pastcities) {
+        console.log(pastcities);
+        var parsedcities = JSON.parse(pastcities);
+        parsedcities.push(newcity);
+        var strCities = JSON.stringify(parsedcities);
+        localStorage.setItem("cityhistory", strCities) 
+    } else {
+        allcities.push(newcity);
+        var strCities = JSON.stringify(allcities);
+        localStorage.setItem("cityhistory", strCities)   
+    }
+    displaysearchhistory()
+
+ 
 
       getfiveday(whatWasSearched)
 
@@ -21,6 +42,22 @@ $(document).ready(function(){
 
    });
 
+   function displaysearchhistory(){
+
+      $(".cities").empty();
+      var citiestodisplay = JSON.parse(localStorage.getItem("cityhistory"));
+     
+      if (citiestodisplay){
+        for (i = 0; i < citiestodisplay.length; i++){
+            var newitem = $("<li>");
+            newitem.text(citiestodisplay[i]);
+            $(".cities").prepend(newitem);
+       }
+
+      }
+
+
+   }
 
     function displaycityinfo(){
         var citysearched = $("#city-form").val();
@@ -40,11 +77,7 @@ $(document).ready(function(){
                  $(".display").empty()
                  
                  $(".display").append(currenttemp ,currenthumidity, currentwindspeed);
-    
-        // This line grabs the input from the textbox
-        var newcity = $("#city-form").val().trim();
 
-        allcities.push(newcity);
 
               });
     } 
@@ -59,13 +92,13 @@ $(document).ready(function(){
       
               for (var i = 0; i < data.list.length; i++){
                   if (data.list[i].dt_txt.split(" ") [1] === "03:00:00"){
-                      console.log("single day", data.list[i])
                       var divE = $("<div>").addClass("card col-md-2") 
-                      var date = $("<p>").text("Date: " + data.list[i].dt_txt.split(" ") [0])
-                      var temp = $("<p>").text("Temperature: " + data.list[i].main.temp)
+                      var date = $("<p>").text("Date: " + moment(data.list[i].dt_txt.split(" ") [0]).format("MMM Do YY"));
+                      var imgtag = $("<img>").attr("src", "https://clipartstation.com/wp-content/uploads/2018/10/weather-clipart-2.jpg").addClass("weatherpic");
+                      var temp = $("<p>").text("Temperature: " + data.list[i].main.temp);
                       var humidity = $("<p>").text("Humidty" +data.list[i].main.humidity);
                     
-                      divE.append(date, temp, humidity);
+                      divE.append(date, imgtag, temp, humidity);
                       $(".forecast").append(divE);
                   }
               }
