@@ -61,7 +61,7 @@ $(document).ready(function(){
 
     function displaycityinfo(){
         var citysearched = $("#city-form").val();
-        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + citysearched + "&appid=e93830c367b80844fd42a32b98ed8cb9&units=imperial"
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + citysearched + "&appid=e93830c367b80844fd42a32b98ed8cb9&units=imperial"
     
             $.ajax({
                 url: queryURL,
