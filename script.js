@@ -32,9 +32,9 @@ $(document).ready(function(){
               }).then(function(response) {
                   console.log(response)
                 // $(".display").text(JSON.stringify(response.list[0].main.temp));
-                 var currenttemp = $("<h1>").text("current temp: " + response.list[0].main.temp);
-                 var currenthumidity = $("<h1>").text("current humidity: " + response.list[0].main.humidity);
-                 var currentwindspeed = $("<h1>").text("current wind speed: " + response.list[0].wind.speed);
+                 var currenttemp = $("<h4>").text("current temp: " + response.list[0].main.temp);
+                 var currenthumidity = $("<h4>").text("current humidity: " + response.list[0].main.humidity);
+                 var currentwindspeed = $("<h4>").text("current wind speed: " + response.list[0].wind.speed);
                  
 
                  $(".display").empty()
